@@ -1,9 +1,9 @@
-const uuid = require('uuid').v4;
+const { v4: uuidv4 } = require('uuid');
 
-let urlDatabase = {}; // In-memory database for storing short URLs
+let urlDatabase = {}; // ที่เก็บ URL แบบชั่วคราว
 
 exports.handler = async function(event, context) {
-    const { url } = JSON.parse(event.body);  // Get the original URL from the body
+    const { url } = JSON.parse(event.body);  // รับ URL จาก request
 
     if (!url) {
         return {
@@ -12,11 +12,9 @@ exports.handler = async function(event, context) {
         };
     }
 
-    // Create a short URL key
-    const shortUrl = uuid().slice(0, 6);  // Create a unique 6-character string
-    urlDatabase[shortUrl] = url;
+    const shortUrl = uuidv4().slice(0, 6);  // สร้าง short URL
+    urlDatabase[shortUrl] = url;  // เก็บ URL
 
-    // Return the shortened URL
     return {
         statusCode: 200,
         body: JSON.stringify({ shortUrl: `https://${event.headers.host}/${shortUrl}` })
