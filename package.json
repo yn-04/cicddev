@@ -1,7 +1,7 @@
 {
-    "name": "url-shortener",
+    "name": "Random Question Generator",
     "version": "1.0.0",
-    "description": "A simple URL shortener app",
+    "description": "Random Question Generator app",
     "main": "index.js",
     "dependencies": {
       "uuid": "^8.3.2"
