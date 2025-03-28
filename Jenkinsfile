@@ -25,8 +25,7 @@ pipeline {
                 echo "🔧 Checking required files..."
                 sh '''
                     test -f public/index.html || (echo "❌ Missing index.html" && exit 1)
-                    test -f functions/shorten.js || (echo "❌ Missing shorten function" && exit 1)
-                    test -f functions/redirect.js || (echo "❌ Missing redirect function" && exit 1)
+                    test -f functions/script.js || (echo "❌ Missing script function" && exit 1)
                     echo "✅ Build check passed."
                 '''
             }
@@ -43,8 +42,7 @@ pipeline {
                 echo "🧪 Testing URL shortener function load..."
                 sh '''
                     npm install uuid
-                    node -e "require('./functions/shorten.js'); console.log('✅ Shorten function loaded successfully')"
-                    node -e "require('./functions/redirect.js'); console.log('✅ Redirect function loaded successfully')"
+                    node -e "require('./functions/script.js'); console.log('✅ Script function loaded successfully')"
                 '''
             }
         }
@@ -72,7 +70,7 @@ pipeline {
 
         stage('Post Deploy') {
             steps {
-                echo "✅ Deployment complete! Your URL shortener app is live."
+                echo "✅ Deployment complete! Random Question Generator."
             }
         }
     }
