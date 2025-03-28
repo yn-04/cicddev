@@ -18,11 +18,11 @@ Fetching upstream changes from https://github.com/yn-04/cicddev.git
  > git --version # 'git version 2.39.5'
  > git fetch --tags --force --progress -- https://github.com/yn-04/cicddev.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
-Checking out Revision 636a29fdd3143efaf2a5d200a8d7a432b3b59fbb (refs/remotes/origin/main)
+Checking out Revision 7ca9d306cb8c690cc1a20d239d11c44374d553b5 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 636a29fdd3143efaf2a5d200a8d7a432b3b59fbb # timeout=10
-Commit message: "Update package.json"
- > git rev-list --no-walk 636a29fdd3143efaf2a5d200a8d7a432b3b59fbb # timeout=10
+ > git checkout -f 7ca9d306cb8c690cc1a20d239d11c44374d553b5 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 7ca9d306cb8c690cc1a20d239d11c44374d553b5 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
@@ -46,10 +46,10 @@ Fetching upstream changes from https://github.com/yn-04/cicddev.git
  > git --version # 'git version 2.39.5'
  > git fetch --tags --force --progress -- https://github.com/yn-04/cicddev.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
-Checking out Revision 636a29fdd3143efaf2a5d200a8d7a432b3b59fbb (refs/remotes/origin/main)
+Checking out Revision 7ca9d306cb8c690cc1a20d239d11c44374d553b5 (refs/remotes/origin/main)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 636a29fdd3143efaf2a5d200a8d7a432b3b59fbb # timeout=10
-Commit message: "Update package.json"
+ > git checkout -f 7ca9d306cb8c690cc1a20d239d11c44374d553b5 # timeout=10
+Commit message: "Update Jenkinsfile"
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -68,18 +68,19 @@ Jenkins seems to be running inside container 944ca53c03e977261cd384f38a40a1c5258
 but /var/jenkins_home/workspace/piep could not be found among []
 but /var/jenkins_home/workspace/piep@tmp could not be found among []
 $ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/piep -v /var/jenkins_home/workspace/piep:/var/jenkins_home/workspace/piep:rw,z -v /var/jenkins_home/workspace/piep@tmp:/var/jenkins_home/workspace/piep@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-alpine cat
-$ docker top d5accac8edf3992eaa7b4ecf578a799666a37faee1c914b500191d510421b54e -eo pid,comm
+$ docker top 6808f2b0a5b64836f32414b66c828d0a20faba7a4e902dd76a3dacdafcba1f05 -eo pid,comm
 [Pipeline] {
 [Pipeline] echo
 🔧 Checking required files...
 [Pipeline] sh
 + test -f public/index.html
 + test -f functions/script.js
++ test -f netlify/functions/script.js
 + echo '✅ Build check passed.'
 ✅ Build check passed.
 [Pipeline] }
-$ docker stop --time=1 d5accac8edf3992eaa7b4ecf578a799666a37faee1c914b500191d510421b54e
-$ docker rm -f --volumes d5accac8edf3992eaa7b4ecf578a799666a37faee1c914b500191d510421b54e
+$ docker stop --time=1 6808f2b0a5b64836f32414b66c828d0a20faba7a4e902dd76a3dacdafcba1f05
+$ docker rm -f --volumes 6808f2b0a5b64836f32414b66c828d0a20faba7a4e902dd76a3dacdafcba1f05
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // stage
@@ -99,7 +100,7 @@ Jenkins seems to be running inside container 944ca53c03e977261cd384f38a40a1c5258
 but /var/jenkins_home/workspace/piep could not be found among []
 but /var/jenkins_home/workspace/piep@tmp could not be found among []
 $ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/piep -v /var/jenkins_home/workspace/piep:/var/jenkins_home/workspace/piep:rw,z -v /var/jenkins_home/workspace/piep@tmp:/var/jenkins_home/workspace/piep@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-alpine cat
-$ docker top 263a5cb48ea6bf4d426cb6112cc53f520bb63c18280479092205a313b610cc5c -eo pid,comm
+$ docker top 4eab74dd89148f7eee2f62e3434268e34ac5fd28d23da46c49d5171b2c2bdc24 -eo pid,comm
 [Pipeline] {
 [Pipeline] echo
 🧪 Testing Random Question Generator load...
@@ -111,9 +112,11 @@ up to date, audited 2 packages in 1s
 found 0 vulnerabilities
 + node -e 'require('"'"'./functions/script.js'"'"'); console.log('"'"'✅ Script function loaded successfully'"'"')'
 ✅ Script function loaded successfully
++ node -e 'require('"'"'./netlify/functions/script.js'"'"'); console.log('"'"'✅ Script function loaded successfully'"'"')'
+✅ Script function loaded successfully
 [Pipeline] }
-$ docker stop --time=1 263a5cb48ea6bf4d426cb6112cc53f520bb63c18280479092205a313b610cc5c
-$ docker rm -f --volumes 263a5cb48ea6bf4d426cb6112cc53f520bb63c18280479092205a313b610cc5c
+$ docker stop --time=1 4eab74dd89148f7eee2f62e3434268e34ac5fd28d23da46c49d5171b2c2bdc24
+$ docker rm -f --volumes 4eab74dd89148f7eee2f62e3434268e34ac5fd28d23da46c49d5171b2c2bdc24
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // stage
@@ -133,7 +136,7 @@ Jenkins seems to be running inside container 944ca53c03e977261cd384f38a40a1c5258
 but /var/jenkins_home/workspace/piep could not be found among []
 but /var/jenkins_home/workspace/piep@tmp could not be found among []
 $ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/piep -v /var/jenkins_home/workspace/piep:/var/jenkins_home/workspace/piep:rw,z -v /var/jenkins_home/workspace/piep@tmp:/var/jenkins_home/workspace/piep@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-alpine cat
-$ docker top 1047ce869ac9bfa0c0f8c5ac5905c372ab6ce9fc8d74917b9e00e18be892fc09 -eo pid,comm
+$ docker top fd140aa864363f4b9edc8ee16d87a47b3b5fe724d23afd718037282cb30b5e25 -eo pid,comm
 [Pipeline] {
 [Pipeline] echo
 🚀 Deploying to Netlify...
@@ -145,7 +148,7 @@ npm warn deprecated gauge@3.0.2: This package is no longer supported.
 npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
 npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
 
-added 1596 packages, and audited 1601 packages in 31s
+added 1596 packages, and audited 1601 packages in 35s
 
 250 packages are looking for funding
   run `npm fund` for details
@@ -172,7 +175,7 @@ Netlify Build
 ​
 ❯ Flags
   auth: ****
-  deployId: 67e6e3c729ac5f0f686c79ed
+  deployId: 67e6e76761642317eecb8433
   dir: public
   open: false
   prod: true
@@ -200,14 +203,14 @@ Netlify Build
 [33m⠋[39m Waiting for deploy to go live...
 [33m⠙[39m Deploy is live!
 
-Build logs:         https://app.netlify.com/sites/gregarious-choux-27d34f/deploys/67e6e3c729ac5f0f686c79ed
+Build logs:         https://app.netlify.com/sites/gregarious-choux-27d34f/deploys/67e6e76761642317eecb8433
 Function logs:      https://app.netlify.com/sites/gregarious-choux-27d34f/logs/functions
 Edge function Logs: https://app.netlify.com/sites/gregarious-choux-27d34f/logs/edge-functions
-Unique deploy URL:  https://67e6e3c729ac5f0f686c79ed--gregarious-choux-27d34f.netlify.app
+Unique deploy URL:  https://67e6e76761642317eecb8433--gregarious-choux-27d34f.netlify.app
 Website URL:        https://gregarious-choux-27d34f.netlify.app
 [Pipeline] }
-$ docker stop --time=1 1047ce869ac9bfa0c0f8c5ac5905c372ab6ce9fc8d74917b9e00e18be892fc09
-$ docker rm -f --volumes 1047ce869ac9bfa0c0f8c5ac5905c372ab6ce9fc8d74917b9e00e18be892fc09
+$ docker stop --time=1 fd140aa864363f4b9edc8ee16d87a47b3b5fe724d23afd718037282cb30b5e25
+$ docker rm -f --volumes fd140aa864363f4b9edc8ee16d87a47b3b5fe724d23afd718037282cb30b5e25
 [Pipeline] // withDockerContainer
 [Pipeline] }
 [Pipeline] // stage
