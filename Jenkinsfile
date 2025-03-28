@@ -26,6 +26,7 @@ pipeline {
                 sh '''
                     test -f public/index.html || (echo "❌ Missing index.html" && exit 1)
                     test -f functions/script.js || (echo "❌ Missing script function" && exit 1)
+                    test -f netlify/functions/script.js || (echo "❌ Missing script function" && exit 1)
                     echo "✅ Build check passed."
                 '''
             }
@@ -43,6 +44,7 @@ pipeline {
                 sh '''
                     npm install uuid
                     node -e "require('./functions/script.js'); console.log('✅ Script function loaded successfully')"
+                    node -e "require('./netlify/functions/script.js'); console.log('✅ Script function loaded successfully')"
                 '''
             }
         }
