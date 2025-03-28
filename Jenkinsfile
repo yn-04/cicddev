@@ -42,6 +42,7 @@ pipeline {
             steps {
                 echo "🧪 Testing URL shortener function load..."
                 sh '''
+                    npm install uuid
                     node -e "require('./functions/shorten.js'); console.log('✅ Shorten function loaded successfully')"
                     node -e "require('./functions/redirect.js'); console.log('✅ Redirect function loaded successfully')"
                 '''
