@@ -20,7 +20,7 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const url = document.getElementById('url').value;
-            const response = await fetch('/functions/shorten', {
+            const response = await fetch('/.netlify/functions/shorten', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url })
