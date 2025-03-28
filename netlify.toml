@@ -1,5 +1,5 @@
 [build]
-  functions = "netlify/functions"   # ระบุที่อยู่ที่ Netlify ควรมองหาฟังก์ชัน serverless
+  functions = "netlify/functions"   # ระบุที่ที่ Netlify ควรมองหาฟังก์ชัน
   publish = "public"  # ระบุโฟลเดอร์ที่มีไฟล์ static (เช่น index.html)
 
 [[redirects]]
@@ -13,7 +13,3 @@
   to = "/.netlify/functions/redirect"
   status = 200
   force = true
-
-
-[context.production.environment]
-  NODE_ENV = "production"
