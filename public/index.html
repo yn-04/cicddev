@@ -25,8 +25,13 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url })
             });
-            const data = await response.json();
-            document.getElementById('shortened-url').innerText = data.shortUrl;
+            
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('shortened-url').innerText = data.shortUrl;
+            } else {
+                document.getElementById('shortened-url').innerText = 'Error: ' + response.statusText;
+            }
         });
     </script>
 </body>
