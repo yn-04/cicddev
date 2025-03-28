@@ -39,7 +39,7 @@ pipeline {
                 }
             }
             steps {
-                echo "🧪 Testing URL shortener function load..."
+                echo "🧪 Testing Random Question Generator load..."
                 sh '''
                     npm install uuid
                     node -e "require('./functions/script.js'); console.log('✅ Script function loaded successfully')"
