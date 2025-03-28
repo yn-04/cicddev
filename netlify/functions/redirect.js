@@ -1,7 +1,7 @@
-let urlDatabase = {}; // ใช้ที่เก็บข้อมูล URL ชั่วคราวในหน่วยความจำ
+let urlDatabase = {}; // ที่เก็บ URL แบบชั่วคราว
 
 exports.handler = async function(event, context) {
-    const shortUrl = event.path.split('/').slice(-1)[0]; // รับ short URL จาก path
+    const shortUrl = event.path.split('/').slice(-1)[0];  // รับ short URL จาก path
     const originalUrl = urlDatabase[shortUrl];  // หา URL เดิมจาก short URL
 
     if (!originalUrl) {
