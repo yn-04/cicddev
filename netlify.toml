@@ -3,13 +3,7 @@
   publish = "public"  # ระบุโฟลเดอร์ที่มีไฟล์ static (เช่น index.html)
 
 [[redirects]]
-  from = "/shorten"
-  to = "/.netlify/functions/shorten"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/{shortUrl}"
-  to = "/.netlify/functions/redirect"
+  from = "/script"
+  to = "/.netlify/functions/script"
   status = 200
   force = true
