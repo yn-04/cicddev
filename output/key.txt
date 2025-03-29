@@ -1,2 +1,2 @@
 NETLIFY_SITE_ID = 'caaecc4d-9158-42c5-8e94-609a10f489b3'  // Replace with your Netlify Site ID
-NETLIFY_AUTH_TOKEN = credentials('netlify-token')  // Replace with your Jenkins credentials ID
+NETLIFY_AUTH_TOKEN = credentials('nfp_eE41y6BNz9cy3VLsfJhBWW8KCJmNkLCsc9af')  // Replace with your Jenkins credentials ID
